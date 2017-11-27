@@ -15,7 +15,7 @@ public:
      * @param disk
      * @param PlayersType
     */
-    Player(Disk *disk, Board::PlayersType);
+    Player(Disk *disk, Board::PlayersType type);
 
     /**
      * The constructor.

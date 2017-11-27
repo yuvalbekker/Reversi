@@ -3,3 +3,16 @@
 //
 
 #include "AIPlayer.h"
+
+AIPlayer::AIPlayer() {
+
+}
+
+AIPlayer::~AIPlayer() {
+
+}
+
+GamePlay AIPlayer::generateGamePlay() {
+    return Player::generateGamePlay();
+}
+

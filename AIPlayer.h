@@ -6,8 +6,38 @@
 #define REVERSE_AIPLAYER_H
 
 
-class AIPlayer {
+#include "Player.h"
 
+class AIPlayer : public Player {
+public:
+
+
+    /**
+ * The constructor.
+ * @param disk
+ * @param PlayersType
+*/
+    AIPlayer(Disk *disk, Board::PlayersType type) : Player(disk,type){}
+
+/**
+     * The constructor.
+    */
+    AIPlayer();
+
+    /**
+     * The destructor.
+    */
+    virtual ~AIPlayer();
+
+    /**
+     * Generates and returns a game play.
+     * @return GamePlay
+    */
+    virtual GamePlay generateGamePlay();
+
+private:
+    static Disk *disk;
+    static Board::PlayersType type;
 };
 
 
