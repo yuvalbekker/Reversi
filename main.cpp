@@ -13,6 +13,7 @@ using namespace std;
 * @return int
 */
 int main() {
+    //check branch commit
     Player *first = new Player(new Disk('X'), Board::Black);
     Player *second = new Player(new Disk('O'), Board::White);
     ConsoleGameOperator *gameOperator = new ConsoleGameOperator(first, second, 8, 8);
