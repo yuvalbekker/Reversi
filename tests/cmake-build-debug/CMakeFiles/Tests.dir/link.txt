@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/Tests.dir/main.cpp.o CMakeFiles/Tests.dir/NormalRulesetTest.cpp.o  -o Tests -lgtest -lgtest_main -lReversi 
