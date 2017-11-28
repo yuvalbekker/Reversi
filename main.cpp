@@ -44,6 +44,7 @@ IPlayer *getPlayerType() {
  * The main function which initializes and runs a game.
  */
 int main() {
+    cout << "Welcome to Reversi!\n";
     IPlayer *first = new RegularPlayer('X');
     IPlayer *second = getPlayerType();
     // Create a new board with size 8 on the heap:
