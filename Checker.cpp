@@ -1,5 +1,3 @@
-// Name: Eyal Lantzman ID: 205502818
-
 #include "Checker.h"
 
 using namespace std;
