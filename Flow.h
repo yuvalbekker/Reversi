@@ -1,5 +1,3 @@
-// Name: Eyal Lantzman ID: 205502818
-
 #ifndef FLOW_H
 #define FLOW_H
 
