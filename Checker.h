@@ -1,5 +1,3 @@
-// Name: Eyal Lantzman ID: 205502818
-
 #ifndef CHECKER_H
 #define CHECKER_H
 
