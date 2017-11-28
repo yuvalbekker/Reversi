@@ -1,4 +1,3 @@
-//Name: Eyal Lantzman ID: 205502818
 
 #ifndef BOARD_H
 #define BOARD_H
