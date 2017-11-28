@@ -1,4 +1,3 @@
-// Name: Eyal Lantzman ID: 205502818
 
 #include <iostream>
 #include "Board.h"
