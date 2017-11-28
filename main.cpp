@@ -1,16 +1,18 @@
-//Yuval Bekker
-//311254585
+// Name: Eyal Lantzman ID: 205502818
 
 #include <iostream>
 #include <sstream>
 #include "Board.h"
-#include "ConsoleGameOperator.h"
-#include "StandardRuleEnricher.h"
+#include "Logic.h"
+#include "Flow.h"
+#include "NormalRuleset.h"
+#include "RegularPlayer.h"
 #include "AIPlayer.h"
+#include "ConsoleGui.h"
 
 using namespace std;
 
-int getPlayerType() {
+IPlayer *getPlayerType() {
     cout << "Choose your opponent: \n";
     cout << "Press 1 for Human player: \n";
     cout << "Press 2 for AI player: \n";
@@ -29,46 +31,42 @@ int getPlayerType() {
             cout << "Wrong input! try again: \n";
         }
     }
-    return playerTypeInput;
+    if (playerTypeInput == 1) {
+        return new RegularPlayer('O');
+    } else if (playerTypeInput == 2) {
+        return new AIPlayer('O');
+    }
+
 }
+
 
 /**
-* The main function of the program.
-* @return int
-*/
+ * The main function which initializes and runs a game.
+ */
 int main() {
-    //check branch commit
+    IPlayer *first = new RegularPlayer('X');
+    IPlayer *second = getPlayerType();
+    // Create a new board with size 8 on the heap:
+    Board *b = new Board(8);
 
-    cout << "Welcome to Reversi!\n";
+    // Create a Logic class with normal rules on the heap:
+    NormalRuleset *rules = new NormalRuleset(b);
+    NormalRuleset &rulesRef = *(rules);
 
-    //Initialize your player
-    Player *first = new Player(new Disk('X'), Board::Black);
-    Player *second;
-    int playerTypeInput = getPlayerType();
-    if (playerTypeInput == 1) {
-        second = new Player(new Disk('O'), Board::White);
-    } else if (playerTypeInput == 2) {
-        second = new AIPlayer(new Disk('O'), Board::White);
-    }
-    /*
-    Player *second = new Player(new Disk('O'), Board::White);*/
-    ConsoleGameOperator *gameOperator = new ConsoleGameOperator(first, second, 8, 8);
-    GameResult result = gameOperator->play((StandardRuleEnricher()));
-    switch (result.getType()) {
-        case Board::White:
-            cout << "O Player Won! your score is " << result.getScore();
-            break;
-        case Board::Black:
-            cout << "X Player Won! your score is " << result.getScore();
-            break;
-        case Board::None:
-            cout << "Tie. score is " << result.getScore();
-            break;
-    }
-    cout << "\n";
-    delete gameOperator;
+    IGui *gui = new ConsoleGui();
+    IGui &guiRef = *(gui);
+
+
+    // Pass it by reference to a new game Flow class:
+    Flow f(rulesRef, guiRef, first, second);
+
+    // Play the game:
+    f.play();
+
+    // Free the board and Logic classes:
+    delete b;
+    delete rules;
     delete first;
     delete second;
-    return 0;
+    delete gui;
 }
-

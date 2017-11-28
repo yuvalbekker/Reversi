@@ -2,43 +2,20 @@
 // Created by yuval on 27/11/17.
 //
 
-#ifndef REVERSE_AIPLAYER_H
-#define REVERSE_AIPLAYER_H
+#ifndef EX1_AIPLAYER_H
+#define EX1_AIPLAYER_H
 
 
-#include "Player.h"
+#include "Checker.h"
+#include "IPlayer.h"
 
-class AIPlayer : public Player {
+class AIPlayer : public IPlayer {
 public:
-
-
-    /**
- * The constructor.
- * @param disk
- * @param PlayersType
-*/
-    AIPlayer(Disk *disk, Board::PlayersType type) : Player(disk,type){}
-
-/**
-     * The constructor.
-    */
-    AIPlayer();
-
-    /**
-     * The destructor.
-    */
+    AIPlayer(char playerType);
     virtual ~AIPlayer();
+    Checker::position generatePosition(std::vector<Checker::position> &moves, Logic &logic);
 
-    /**
-     * Generates and returns a game play.
-     * @return GamePlay
-    */
-    virtual GamePlay generateGamePlay();
-
-private:
-    static Disk *disk;
-    static Board::PlayersType type;
 };
 
 
-#endif //REVERSE_AIPLAYER_H
+#endif //EX1_AIPLAYER_H

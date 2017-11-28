@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.8)
-project(Reverse)
+project(ex1)
 
 set(CMAKE_CXX_STANDARD 98)
 
-set(SOURCE_FILES main.cpp Board.cpp Board.h Player.cpp Player.h Disk.cpp Disk.h GamePlay.cpp GamePlay.h GameResult.cpp GameResult.h RowOccupationContainer.cpp RowOccupationContainer.h IGui.cpp IGui.h GeneralGameOperator.cpp GeneralGameOperator.h ConsoleGameOperator.cpp ConsoleGameOperator.h IRuleEnricher.cpp IRuleEnricher.h StandardRuleEnricher.cpp StandardRuleEnricher.h AIPlayer.cpp AIPlayer.h)
-add_executable(Reverse ${SOURCE_FILES})
+set(SOURCE_FILES main.cpp Board.cpp Board.h Checker.cpp Checker.h Logic.cpp Logic.h Flow.cpp Flow.h NormalRuleset.cpp NormalRuleset.h IPlayer.cpp IPlayer.h RegularPlayer.cpp RegularPlayer.h AIPlayer.cpp AIPlayer.h IGui.cpp IGui.h ConsoleGui.cpp ConsoleGui.h)
+add_executable(ex1 ${SOURCE_FILES} Board.cpp Board.h)

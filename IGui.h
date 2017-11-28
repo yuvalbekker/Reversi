@@ -1,28 +1,29 @@
-//Yuval Bekker
-//311254585
+//
+// Created by yuval on 28/11/17.
+//
 
-#ifndef REVERSE_IGUI_H
-#define REVERSE_IGUI_H
+#ifndef EX1_IGUI_H
+#define EX1_IGUI_H
 
 
-#include "RowOccupationContainer.h"
+#include <vector>
+#include "Board.h"
 
 class IGui {
 public:
     /**
     * The destructor.
     */
-    virtual ~IGui() {};
+    virtual ~IGui();
 
     /**
     * Prints the Board.
     */
-    virtual void printBoard() = 0;
-    /**
-    * Prints the input possible plays.
-    */
-    virtual void showPossiblePlays(vector<RowOccupationContainer> *plays) = 0;
+    virtual void printBoard(Board *b);
+
+    virtual void printPossiblePlays(std::vector<Checker::position> &moves);
+
 };
 
 
-#endif //REVERSE_IGUI_H
+#endif //EX1_IGUI_H
