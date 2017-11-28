@@ -1,5 +1,3 @@
-// Name: Eyal Lantzman ID: 205502818
-
 #include "Logic.h"
 
 using namespace std;
