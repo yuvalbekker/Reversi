@@ -1,7 +1,3 @@
-//
-// Created by yuval on 27/11/17.
-//
-
 #ifndef EX1_REGULARPLAYER_H
 #define EX1_REGULARPLAYER_H
 
@@ -12,7 +8,7 @@ class RegularPlayer : public IPlayer {
 public:
     RegularPlayer(char playerType);
     virtual ~RegularPlayer();
-    Checker::position generatePosition(std::vector<Checker::position> &moves, Logic &logic);
+    Checker::position generatePosition(std::vector<Checker::position> &moves, Board &board);
 };
 
 

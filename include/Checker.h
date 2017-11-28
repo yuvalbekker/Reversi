@@ -1,5 +1,3 @@
-// Name: Eyal Lantzman
-
 #ifndef CHECKER_H
 #define CHECKER_H
 
@@ -10,7 +8,6 @@ class Checker {
 public:
 
 // Definitions:
-
     struct position {
         int row;
         int col;
@@ -35,20 +32,15 @@ private:
 // Functions:
 
 public:
-
     /**
-    * This function prints the checkers' value.
-    */
-    void print() const;
-
-    /**
-    * This is a getter for the checker's value.
-    */
+     * This is a getter for the checker's value.
+     * @return char
+     */
     char getVal() const;
 
     /**
-    * This function sets the val to 'X' (Black).
-    */
+     * This function sets the val to 'X' (Black).
+     */
     void setX();
 
     /**
@@ -62,19 +54,23 @@ public:
     void setEmpty();
 
     /**
-    * This functions checks if the checker is empty.
-    */
+     * This functions checks if the checker is empty.
+     * @return bool
+     */
     bool isEmpty() const;
 
     /**
-    * This functions gets two integers as a position and sets the checkers'
-    * position accordingly.
-    */
+     * This functions gets two integers as a position and sets the checkers'
+     * position accordingly.
+     * @param row
+     * @param col
+     */
     void setPosition(int row, int col);
 
     /**
-    * This is a getter for the checker's position.
-    */
+     * This is a getter for the checker's position.
+     * @return struct position
+     */
     struct position getPosition() const;
 };
 

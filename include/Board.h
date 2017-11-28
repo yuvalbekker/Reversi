@@ -1,5 +1,3 @@
-//Name: Eyal Lantzman
-
 #ifndef BOARD_H
 #define BOARD_H
 
@@ -22,8 +20,9 @@ private:
 public:
 
     /**
-    * A constructor for board.
-    */
+     * A constructor for board.
+     * @param s
+     */
     Board(int s);
 
     /**
@@ -34,19 +33,26 @@ public:
 
 //Functions:
 
-    /**
-    * This function prints the board matrix.
-    */
-    void print() const;
+    void cloneBoard(Board *b);
 
     /**
-    * This is a getter for the board size.
-    */
+     * This function returns the # of playerType
+     * checkers on the board.
+     * @param playerType
+     * @return int
+     */
+    int countPlayersCheckers(char playerType);
+
+    /**
+     * This is a getter for the board size.
+     * @return int
+     */
     int getSize() const;
 
     /**
-    * This is a getter for the board matrix.
-    */
+     * This is a getter for the board matrix.
+     * @return  Checker **
+     */
     Checker **getBoard() const;
 };
 

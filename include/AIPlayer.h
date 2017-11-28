@@ -1,7 +1,3 @@
-//
-// Created by yuval on 27/11/17.
-//
-
 #ifndef EX1_AIPLAYER_H
 #define EX1_AIPLAYER_H
 
@@ -11,9 +7,16 @@
 
 class AIPlayer : public IPlayer {
 public:
+    /**
+     * The constructor.
+     * @param playerType
+     */
     AIPlayer(char playerType);
+
+
     virtual ~AIPlayer();
-    Checker::position generatePosition(std::vector<Checker::position> &moves, Logic &logic);
+
+    Checker::position generatePosition(std::vector<Checker::position> &moves, Board &board);
 
 };
 
