@@ -1,109 +1,54 @@
-//Yuval Bekker
-//311254585
+//Name: Eyal Lantzman ID: 205502818
 
+#ifndef BOARD_H
+#define BOARD_H
 
-#ifndef REVERSE_BOARD_H
-#define REVERSE_BOARD_H
+#include <iostream>
+#include "Checker.h"
 
-#include <vector>
-#include "GamePlay.h"
-#include "RowOccupationContainer.h"
-
-using namespace std;
-
+// This class holds the board matrix and details about the board.
 class Board {
 
+//Members:
+
+private:
+
+    int size;
+    Checker **board;
+
+
+//Constructor & D'tor:
+
 public:
-    //static const int rows = 8;
-    //static const int columns = 8;
-#ifndef ENUMAPPSTATE_H
-#define ENUMAPPSTATE_H
-    /**
- * Types of players enum.
-*/
-    enum PlayersType {
-        Black, White, None
-    };
-#endif
 
     /**
-    * Board Class Constructor.
-     * @param numberOfRows
-     * @param numberOfColumns
+    * A constructor for board.
     */
-    Board(int numberOfRows, int numberOfColumns);
+    Board(int s);
 
     /**
-    * Board Class Destructor.
+    * A d'tor for board.
     */
     ~Board();
 
-    /**
-    * Returns the player type of the input cell.
-     * @return PlayersType
-    */
-    PlayersType getBoardCellContent(int rowNumber, int columnNumber);
+
+//Functions:
 
     /**
-    * Calculates the standard possible plays.
-     * @param type
-     * @return vector<RowOccupationContainer>
+    * This function prints the board matrix.
     */
-    vector<RowOccupationContainer> *getStandardPossibleGamePlays(PlayersType type);
+    void print() const;
 
     /**
-    * Returns true if the board is full, otherwise false.
-     * @return bool
+    * This is a getter for the board size.
     */
-    bool isFullBoard();
+    int getSize() const;
 
     /**
-    * Returns true if the input type player has possible moves, otherwise false.
-     * @param type
-     * @return bool
+    * This is a getter for the board matrix.
     */
-    bool hasStandardPossibleGamePlays(PlayersType type);
-
-    /**
-    * Applies int input play on the board.
-     * @param type
-     * @param play
-     * @return bool
-    */
-    void makePlay(PlayersType type, RowOccupationContainer play);
-
-    /**
-    * Returns the number of disks ogf the input player type.
-     * @param type
-     * @return int
-    */
-    int getNumberOfDisks(PlayersType type);
-
-    /**
-    * Returns true if the input game play is out of the bounds of the board, otherwise false.
-     * @param play
-     * @return bool
-    */
-    bool isOutOfBounds(GamePlay play);
-
-    int rows;
-    int columns;
-
-private:
-    PlayersType **boardMatrix;
-
-    /**
-    * Initializes the Board.
-    */
-    void initializeBoard();
-
-    vector<GamePlay> *whitePlayerPositions;
-    vector<GamePlay> *blackPlayerPositions;
-
-    /**
-    * Update the two players type vectors.
-    */
-    void updateBoardOccupationStatus();
+    Checker **getBoard() const;
 };
 
-#endif //REVERSE_BOARD_H
+
+#endif

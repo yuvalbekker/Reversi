@@ -2,19 +2,17 @@
 // Created by yuval on 28/11/17.
 //
 
-#ifndef EX1_IGUI_H
-#define EX1_IGUI_H
+#ifndef EX1_CONSOLEGUI_H
+#define EX1_CONSOLEGUI_H
 
 
-#include <vector>
-#include "Board.h"
+#include "IGui.h"
 
-class IGui {
+class ConsoleGui : public IGui {
 public:
-    /**
-    * The destructor.
-    */
-    virtual ~IGui();
+    ConsoleGui();
+
+    virtual ~ConsoleGui();
 
     /**
     * Prints the Board.
@@ -26,4 +24,4 @@ public:
 };
 
 
-#endif //EX1_IGUI_H
+#endif //EX1_CONSOLEGUI_H
