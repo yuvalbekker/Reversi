@@ -9,6 +9,8 @@
 // This class is in charge of a player.
 class IPlayer {
 
+public:
+
 // D'tor:
     /**
      * A virtual d'tor to prevent polymorphism issues.
@@ -16,7 +18,6 @@ class IPlayer {
     virtual ~IPlayer();
 
 // Functions:
-public:
     /**
      * This function gets a possible moves vector and a board, and decides
      * which move to choose based on user input or an AI algorithm.
