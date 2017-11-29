@@ -1,18 +1,24 @@
-#ifndef EX1_CONSOLEGUI_H
-#define EX1_CONSOLEGUI_H
+#ifndef CONSOLEGUI_H
+#define CONSOLEGUI_H
 
 
 #include "IGui.h"
 
+// This class is responsible for the game's interface in console mode.
+// (functions' comments appear on interface IGui.h).
 class ConsoleGui : public IGui {
 public:
-    ConsoleGui();
-
-    virtual ~ConsoleGui();
 
     /**
-    * Prints the Board.
+    * A c'tor for a ConsoleGui.
     */
+    ConsoleGui();
+
+    /**
+    * A virtual d'tor to prevent polymorphism issues.
+    */
+    virtual ~ConsoleGui();
+
     virtual void printBoard(Board *b);
 
     virtual void printPossiblePlays(std::vector<Checker::position> &moves, IPlayer *player);
@@ -28,4 +34,4 @@ public:
 };
 
 
-#endif //EX1_CONSOLEGUI_H
+#endif //CONSOLEGUI_H

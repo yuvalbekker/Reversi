@@ -1,6 +1,4 @@
-// Name: Eyal Lantzman
-
-#include "NormalRuleset.h"
+#include "../include/NormalRuleset.h"
 
 using namespace std;
 

@@ -7,23 +7,23 @@
 #include "GameResult.h"
 
 class Flow {
-public:
 
 //Constructor:
+public:
 
     /**
-     * A constructor for flow. It gets a reference to a Logic instance.
-     * @param l
-     * @param gui
-     * @param first
-     * @param second
-     */
+    * A constructor for flow. It gets a reference to a Logic instance.
+    * @param l
+    * @param gui
+    * @param first
+    * @param second
+    */
     Flow(Logic &l, IGui &gui, IPlayer *first, IPlayer *second);
 
 
 // Members:
-
 private:
+
     Logic &logic;
     IGui &gui;
     IPlayer *first;
@@ -31,21 +31,21 @@ private:
     IPlayer *currentPlayer;
 
 // Functions:
-
 private:
 
     /**
-     * Return true is the game is over, otherwise false.
+     * This function true if the game is over, otherwise false.
      * @return bool
      */
     bool isGameOver();
 
     /**
-     * Switch the current player turn.
+     * This function switches the current player's turn.
      */
     void switchPlayerTurn();
+
     /**
-     * Calculate the result of the game.
+     * This function determines the result of the game.
      * @return GameResult
      */
     GameResult calculateGameResult();
@@ -60,4 +60,4 @@ public:
 };
 
 
-#endif //EX1_FLOW_H
+#endif //FLOW_H

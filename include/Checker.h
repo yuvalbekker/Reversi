@@ -14,7 +14,6 @@ public:
     };
 
 // Constructor:
-
 public:
 
     /**
@@ -23,14 +22,11 @@ public:
     Checker();
 
 // Members:
-
 private:
-
     char val;
     struct position pos;
 
 // Functions:
-
 public:
     /**
      * This is a getter for the checker's value.
@@ -75,4 +71,4 @@ public:
 };
 
 
-#endif //EX1_TILE_H
+#endif //CHECKER_H

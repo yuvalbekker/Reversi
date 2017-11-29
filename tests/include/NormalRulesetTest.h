@@ -1,16 +1,19 @@
 #ifndef REVERSI_NORMALRULESETTEST_H
 #define REVERSI_NORMALRULESETTEST_H
 
-#include <Checker.h>
+#include "../../include/Checker.h"
 #include <gtest/gtest.h>
-#include <NormalRuleset.h>
+#include "../../include/NormalRuleset.h"
 
+// This test fixture tests the NormalRuleset class, especially
+// calculating the right moves for a player.
 class NormalRulesetTest : public testing::Test {
 
-// C'tor:
 public:
 
-// SetUp and TearDown:
+    /**
+    * A SetUp routine for NormalRulesetTest.
+    */
     virtual void SetUp() {
 
         // Create a new board with size 8 on the heap:
@@ -20,6 +23,9 @@ public:
         rules = new NormalRuleset(b);
     }
 
+    /**
+    * A TearDown routine for NormalRulesetTest.
+    */
     virtual void TearDown() {
 
         // Free the board and Logic classes:
@@ -27,7 +33,7 @@ public:
         delete rules;
     }
 
-    // Members:
+// Members:
 protected:
     Board *b;
     NormalRuleset *rules;

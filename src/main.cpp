@@ -1,52 +1,29 @@
-// Name: Eyal Lantzman ID: 205502818
-
 #include <iostream>
 #include <sstream>
-#include "Board.h"
-#include "Logic.h"
-#include "Flow.h"
-#include "NormalRuleset.h"
-#include "RegularPlayer.h"
-#include "AIPlayer.h"
-#include "ConsoleGui.h"
+#include "../include/Board.h"
+#include "../include/Logic.h"
+#include "../include/Flow.h"
+#include "../include/NormalRuleset.h"
+#include "../include/RegularPlayer.h"
+#include "../include/AIPlayer.h"
+#include "../include/ConsoleGui.h"
 
 using namespace std;
 
-IPlayer *getPlayerType() {
-    cout << "Choose your opponent: \n";
-    cout << "Press 1 for Human player: \n";
-    cout << "Press 2 for AI player: \n";
-    int playerTypeInput = -1;
-    string input;
-    while (playerTypeInput != 1 && playerTypeInput != 2) {
-        cin >> input;
-        try {
-            stringstream ss(input);
-            ss >> playerTypeInput;
-            if (playerTypeInput != 1 && playerTypeInput != 2) {
-                cout << "Wrong input! try again: \n";
-            }
-        }
-        catch (exception e) {
-            cout << "Wrong input! try again: \n";
-        }
-    }
-    if (playerTypeInput == 1) {
-        return new RegularPlayer('O');
-    } else if (playerTypeInput == 2) {
-        return new AIPlayer('O');
-    }
-
-}
-
-
 /**
  * The main function which initializes and runs a game.
+ * @return int
  */
 int main() {
-    cout << "Welcome to Reversi!\n";
+
+    //Create a console GUI instance.
+    IGui *gui = new ConsoleGui();
+    IGui &guiRef = *(gui);
+
+    //Create players.
     IPlayer *first = new RegularPlayer('X');
-    IPlayer *second = getPlayerType();
+    IPlayer *second = gui->scanPlayerType();
+
     // Create a new board with size 8 on the heap:
     Board *b = new Board(8);
 
@@ -54,17 +31,15 @@ int main() {
     NormalRuleset *rules = new NormalRuleset(b);
     NormalRuleset &rulesRef = *(rules);
 
-    IGui *gui = new ConsoleGui();
-    IGui &guiRef = *(gui);
-
 
     // Pass it by reference to a new game Flow class:
     Flow f(rulesRef, guiRef, first, second);
 
-    // Play the game:
-    f.play();
+    // Play the game and print the result:
+    GameResult result = f.play();
+    gui->printGameResult(result);
 
-    // Free the board and Logic classes:
+    // Free the allocated objects:
     delete b;
     delete rules;
     delete first;

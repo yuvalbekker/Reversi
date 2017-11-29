@@ -8,17 +8,13 @@
 class Board {
 
 //Members:
-
 private:
-
     int size;
     Checker **board;
 
 
 //Constructor & D'tor:
-
 public:
-
     /**
      * A constructor for board.
      * @param s
@@ -32,7 +28,9 @@ public:
 
 
 //Functions:
-
+    /**
+     * This function clones the given board.
+     */
     void cloneBoard(Board *b);
 
     /**

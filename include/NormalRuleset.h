@@ -3,10 +3,11 @@
 
 #include "Logic.h"
 
+// This class is in charge of the game logic
+// under the standard Reversi ruleset.
 class NormalRuleset : public Logic {
 
 public:
-
     /**
      * A constructor the normal rules logic. It gets a pointer
      * to a board to work with.
@@ -96,4 +97,4 @@ public:
 };
 
 
-#endif //EX1_NORMALRULESET_H
+#endif //NORMALRULESET_H

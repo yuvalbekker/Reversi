@@ -1,6 +1,4 @@
-// Name: Eyal Lantzman
-
-#include "Logic.h"
+#include "../include/Logic.h"
 
 using namespace std;
 
@@ -9,7 +7,7 @@ Logic::Logic(Board *b) : boardClass(b) {
 
 Board &Logic::getBoardClass() const {
 
-    // Return a dereferenced pointer (a ref):
+    // Return a dereferenced pointer (a ref.):
     return *boardClass;
 }
 

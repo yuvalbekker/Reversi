@@ -1,8 +1,4 @@
-//
-// Created by yuval on 27/11/17.
-//
-
-#include "RegularPlayer.h"
+#include "../include/RegularPlayer.h"
 #include <limits>
 
 using namespace std;
@@ -11,12 +7,14 @@ RegularPlayer::RegularPlayer(char playerType) {
     this->playerType = playerType;
 }
 
+Checker::position RegularPlayer::generatePosition(std::vector<Checker::position> &moves, Board &board) {
 
-Checker::position RegularPlayer::generatePosition(std::vector<Checker::position> &moves, Logic &logic) {
+    // Declare variables:
     Checker::position pos;
     int i = 0;
     int j = 0;
 
+    // Interface with the user to get a move:
     while (true) {
         bool foundInMoves = false;
         cout << "\nPlease enter your move in the format: row col" << endl;

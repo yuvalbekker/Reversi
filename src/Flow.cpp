@@ -1,40 +1,25 @@
-// Name: Eyal Lantzman
-#include "Flow.h"
+#include "../include/Flow.h"
 
 using namespace std;
 
 Flow::Flow(Logic &l, IGui &gui, IPlayer *first, IPlayer *second) : logic(l), gui(gui) {
-    blackMovesEnded = false;
-    whiteMovesEnded = false;
     this->first = first;
     this->second = second;
     this->currentPlayer = first;
 }
 
-int Flow::countPlayersCheckers(char playerType) const {
-    int count = 0;
-    int i = 0;
-    int j = 0;
-    for (i = 0; i < logic.getBoardClass().getSize(); i++) {
-        for (j = 0; j < logic.getBoardClass().getSize(); j++) {
-            if (logic.getBoardClass().getBoard()[i][j].getVal() == playerType) {
-                count++;
-            }
-        }
-    }
+GameResult Flow::play() {
 
-    return count;
-}
-
-void Flow::play() {
+    // Run this code while the game is not over:
     while (!isGameOver()) {
-        // Print the board status:
-        cout << "Current Board: " << endl;
-        //logic.getBoardClass().print();
 
+        //Print the board:
         this->gui.printBoard(&this->logic.getBoardClass());
+        int whiteScore = logic.getBoardClass().countPlayersCheckers('O');
+        int blackScore = logic.getBoardClass().countPlayersCheckers('X');
+        this->gui.printScore(blackScore, whiteScore);
 
-        // Get possible moves:
+        // Get the possible moves for the player:
         Logic::Player playerType = Logic::Black;
         if (this->currentPlayer->playerType == 'X') {
             playerType = Logic::Black;
@@ -42,63 +27,71 @@ void Flow::play() {
             playerType = Logic::White;
         }
         vector<Checker::position> &moves = logic.calcPossibleMoves(playerType);
-        cout << "Player " << this->currentPlayer->playerType << " It's your turn." << endl;
-        cout << "Your " << moves.size() << " possible moves: ";
 
-        // If there are no possible moves, mark it and return:
-        if (moves.empty()) {
-            cout << "You have no possible moves. Play goes to the "
-                    "other player." << endl;
-        } else {
-            // If there are moves, print them out:
-            /*for (int i = 0; i < moves.size(); i++) {
-                cout << "(" << moves[i].row + 1
-                     << "," << moves[i].col + 1 << ")" << " ";
-            }*/
-            this->gui.printPossiblePlays(moves);
-            Checker::position pos = this->currentPlayer->generatePosition(moves, this->logic);
+        //Print the moves:
+        this->gui.printPossiblePlays(moves, this->currentPlayer);
+
+        // If the current player has possible moves:
+        if (!moves.empty()) {
+            Checker::position generatedPosition = this->currentPlayer->generatePosition(moves, this->logic.getBoardClass());
+            this->gui.printChosenPlay(generatedPosition);
+
             // Make the move:
             if (this->currentPlayer->playerType == 'X') {
-                logic.makeMove(pos, Logic::Black);
+                logic.makeMove(generatedPosition, Logic::Black);
             } else {
-                logic.makeMove(pos, Logic::White);
+                logic.makeMove(generatedPosition, Logic::White);
             }
         }
-        switchPlayers();
-
+        switchPlayerTurn();
     }
+
+    //Print the final board.
+    this->gui.printBoard(&this->logic.getBoardClass());
+    return calculateGameResult();
 }
 
 bool Flow::isGameOver() {
-    // If the board is full or there are no more moves:
-    if (countPlayersCheckers('O') + countPlayersCheckers('X') ==
-        (logic.getBoardClass().getSize() * logic.getBoardClass().getSize())
-        || (whiteMovesEnded && blackMovesEnded)) {
-        if (countPlayersCheckers('X') > countPlayersCheckers('O')) {
-            cout << "Black wins! Good game." << endl;
-            return true;
-        }
 
-        if (countPlayersCheckers('X') < countPlayersCheckers('O')) {
-            cout << "White wins! Good game." << endl;
-            return true;
-        }
-
-        if (countPlayersCheckers('O') == countPlayersCheckers('X')) {
-            cout << "It's a tie! Good game." << endl;
-            return true;
-        }
+    // If there are no more possible moves for both players, end the game:
+    if (this->logic.calcPossibleMoves(Logic::Black).size() == 0
+        && this->logic.calcPossibleMoves(Logic::White).size() == 0) {
+        return true;
     }
-    return false;
+
+    // If the board is full, end it as well:
+    int blackScore = this->logic.getBoardClass().countPlayersCheckers('X');
+    int whiteScore = this->logic.getBoardClass().countPlayersCheckers('O');
+    int boardSize = this->logic.getBoardClass().getSize() * this->logic.getBoardClass().getSize();
+    return ((whiteScore + blackScore) == boardSize);
 }
 
-void Flow::switchPlayers() {
+void Flow::switchPlayerTurn() {
+
+    // Change turn according to the current turn:
     if (this->currentPlayer->playerType == this->first->playerType) {
         this->currentPlayer = this->second;
     } else if (this->currentPlayer->playerType == this->second->playerType) {
         this->currentPlayer = this->first;
     }
+}
 
+GameResult Flow::calculateGameResult() {
+
+    // Count the player's pieces:
+    int whiteScore = logic.getBoardClass().countPlayersCheckers('O');
+    int blackScore = logic.getBoardClass().countPlayersCheckers('X');
+
+    // Return the result based on the count:
+    if (blackScore > whiteScore) {
+        return GameResult(GameResult::Black, blackScore);
+    }
+    if (blackScore < whiteScore) {
+        return GameResult(GameResult::White, whiteScore);
+    }
+    if (whiteScore == blackScore) {
+        return GameResult(GameResult::None, whiteScore);
+    }
 }
 
 

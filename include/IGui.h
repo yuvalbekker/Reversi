@@ -1,13 +1,14 @@
-#ifndef EX1_IGUI_H
-#define EX1_IGUI_H
-
+#ifndef IGUI_H
+#define IGUI_H
 
 #include <vector>
 #include "Board.h"
 #include "GameResult.h"
 #include "IPlayer.h"
 
+// This class is responsible for the game's interface.
 class IGui {
+
 public:
     /**
     * The destructor.
@@ -51,9 +52,7 @@ public:
      * @param move
      */
     virtual void printChosenPlay(Checker::position move);
-
-
 };
 
 
-#endif //EX1_IGUI_H
+#endif //IGUI_H

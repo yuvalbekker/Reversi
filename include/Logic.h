@@ -6,12 +6,11 @@
 #include <string>
 #include "Board.h"
 
+// This class is in charge of the game logic.
 class Logic {
 
 // Constructor:
-
 public:
-
     /**
      * This c'tor for Logic gets a pointer to a Board instance.
      * @param b
@@ -24,7 +23,6 @@ public:
     virtual ~Logic();
 
 // Definitions & Members:
-
 public:
 
     enum Player {
@@ -38,7 +36,6 @@ protected:
     std::vector<struct Checker::position> moves;
 
 // Functions:
-
 public:
 
     /**
@@ -200,4 +197,4 @@ protected:
 };
 
 
-#endif //EX1_LOGIC_H
+#endif //LOGIC_H

@@ -1,10 +1,6 @@
-//
-// Created by yuval on 27/11/17.
-//
+#include "../include/IPlayer.h"
 
-#include "IPlayer.h"
-
-Checker::position IPlayer::generatePosition(std::vector<Checker::position> &moves,Logic &logic) {
+Checker::position IPlayer::generatePosition(std::vector<Checker::position> &moves,Board &board) {
     return Checker::position();
 }
 

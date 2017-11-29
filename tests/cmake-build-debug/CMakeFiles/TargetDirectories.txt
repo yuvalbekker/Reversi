@@ -1,2 +1,0 @@
-/home/eyal/Desktop/ex3ap/Reversi/Tests/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/eyal/Desktop/ex3ap/Reversi/Tests/cmake-build-debug/CMakeFiles/edit_cache.dir

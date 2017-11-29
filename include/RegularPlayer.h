@@ -1,9 +1,9 @@
-#ifndef EX1_REGULARPLAYER_H
-#define EX1_REGULARPLAYER_H
-
+#ifndef REGULARPLAYER_H
+#define REGULARPLAYER_H
 
 #include "IPlayer.h"
 
+// This class is in charge of a human player.
 class RegularPlayer : public IPlayer {
 public:
     RegularPlayer(char playerType);
@@ -12,4 +12,4 @@ public:
 };
 
 
-#endif //EX1_REGULARPLAYER_H
+#endif //REGULARPLAYER_H

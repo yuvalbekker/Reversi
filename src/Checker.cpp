@@ -1,18 +1,11 @@
-// Name: Eyal Lantzman
-
-#include "Checker.h"
+#include "../include/Checker.h"
 
 using namespace std;
 
 Checker::Checker() {
 
     //Initialize the checker:
-
     this->setEmpty();
-}
-
-void Checker::print() const {
-    cout << " " << val << " |";
 }
 
 char Checker::getVal() const {
