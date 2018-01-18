@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox fx:id="root" spacing="12" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="main.SettingsController">
+    <children>
+        <MenuBar fx:id="menuBar">
+            <menus>
+                <Menu text="File">
+                    <items>
+                        <MenuItem text="Save" onAction="#handleSaveAction"/>
+                        <MenuItem text="Load"/>
+                    </items>
+                </Menu>
+                <Menu text="Options">
+                    <items>
+                        <MenuItem text="Start" onAction="#handleStartAction"/>
+                        <MenuItem text="Main Window" onAction="#handleMainWindowAction"/>
+                        <SeparatorMenuItem/>
+                        <MenuItem text="Exit" onAction="#handleExitAction"/>
+                    </items>
+                </Menu>
+                <Menu text="Help">
+                    <items>
+                        <MenuItem text="About"/>
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <HBox>
+            <children>
+                <Label text="First player color:">
+                    <font>
+                        <Font size="15.0"/>
+                    </font>
+                    <padding>
+                        <Insets left="10.0"/>
+                    </padding>
+                </Label>
+                <Label text="${controller.firstPlayerColor}">
+                    <font>
+                        <Font size="15.0"/>
+                    </font>
+                    <padding>
+                        <Insets left="10.0"/>
+                    </padding>
+                </Label>
+            </children>
+        </HBox>
+        <HBox>
+            <children>
+                <TextField fx:id="firstPlayerField" maxWidth="120.0">
+                    <font>
+                        <Font size="15.0"/>
+                    </font>
+                    <HBox.margin>
+                        <Insets left="10.0"/>
+                    </HBox.margin>
+                </TextField>
+            </children>
+        </HBox>
+        <HBox>
+            <children>
+                <Label text="Second player color:">
+                    <font>
+                        <Font size="15.0"/>
+                    </font>
+                    <padding>
+                        <Insets left="10.0"/>
+                    </padding>
+                </Label>
+                <Label text="${controller.secondPlayerColor}">
+                    <font>
+                        <Font size="15.0"/>
+                    </font>
+                    <padding>
+                        <Insets left="10.0"/>
+                    </padding>
+                </Label>
+            </children>
+        </HBox>
+        <HBox>
+            <children>
+                <TextField fx:id="secondPlayerField" maxWidth="120">
+                    <font>
+                        <Font size="15.0"/>
+                    </font>
+
+                    <HBox.margin>
+                        <Insets left="10.0"/>
+                    </HBox.margin>
+                </TextField>
+            </children>
+        </HBox>
+        <HBox>
+            <children>
+                <Label text="Game board size:">
+                    <font>
+                        <Font size="15.0"/>
+                    </font>
+                    <padding>
+                        <Insets left="10.0"/>
+                    </padding>
+                </Label>
+                <Label text="${controller.size}">
+                    <font>
+                        <Font size="15.0"/>
+                    </font>
+                    <padding>
+                        <Insets left="10.0"/>
+                    </padding>
+                </Label>
+            </children>
+        </HBox>
+        <HBox>
+            <children>
+                <TextField fx:id="sizeField" maxWidth="120">
+                    <font>
+                        <Font size="15.0"/>
+                    </font>
+                    <HBox.margin>
+                        <Insets left="10.0"/>
+                    </HBox.margin>
+                </TextField>
+            </children>
+        </HBox>
+    </children>
+    <HBox alignment="BOTTOM_CENTER">
+        <children>
+            <Label text="${controller.result}">
+                <font>
+                    <Font size="15.0"/>
+                </font>
+                <padding>
+                    <Insets bottom="10.0"/>
+                </padding>
+            </Label>
+        </children>
+    </HBox>
+</VBox>

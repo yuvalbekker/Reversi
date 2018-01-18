@@ -1,0 +1,5 @@
+<reversiSettings>
+    <firstPlayerColor>0x000000ff</firstPlayerColor>
+    <secondPlayerColor>0xffffffff</secondPlayerColor>
+    <gameBorderSize>8</gameBorderSize>
+</reversiSettings>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<HBox xmlns:fx="http://javafx.com/fxml/1" fx:id="root" spacing="10">
+    <VBox alignment="TOP_LEFT" spacing="10">
+        <HBox>
+            <Label text="Current player:">
+                <font>
+                    <Font size="15.0"/>
+                </font>
+            </Label>
+            <Label fx:id="currentPlayerLabel" text="">
+                <font>
+                    <Font size="15.0"/>
+                </font>
+            </Label>
+        </HBox>
+        <HBox>
+            <Label fx:id="firstPlayerScore" text="">
+                <font>
+                    <Font size="15.0"/>
+                </font>
+            </Label>
+        </HBox>
+        <HBox>
+            <Label fx:id="secondPlayerScore" text="">
+                <font>
+                    <Font size="15.0"/>
+                </font>
+            </Label>
+        </HBox>
+    </VBox>
+</HBox>
