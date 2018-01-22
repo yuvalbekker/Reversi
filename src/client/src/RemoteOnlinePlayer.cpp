@@ -1,0 +1,26 @@
+#include <iostream>
+#include "../include/RemoteOnlinePlayer.h"
+using namespace std;
+
+RemoteOnlinePlayer::RemoteOnlinePlayer(ReversiClient* matchingClient): client(matchingClient) {
+}
+
+RemoteOnlinePlayer::~RemoteOnlinePlayer() {
+}
+
+Checker::position RemoteOnlinePlayer::generatePosition(Checker::position &pos) {
+
+    // Read the position from the server:
+    try {
+        this->client->readPosition(pos);
+    }
+
+    catch (const char *msg) {
+        cout << "Failed to send chosen position to server. Reason:" << msg << endl;
+    }
+    return pos;
+}
+
+
+
+
